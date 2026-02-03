@@ -19,45 +19,27 @@ If there is nothing more to read or an error occurs, the function returns NULL.
 
 ## 📌 Function Behavior**
 
-Reads from a given file descriptor
-
-Returns one line per function call
-
-Includes the newline character (\n) if it exists
-
-Handles files with or without a trailing newline
-
-Works correctly with different BUFFER_SIZE values
-
-Uses a static variable to store remaining data between calls
+- Reads from a given file descriptor
+- Returns one line per function call
+- Includes the newline character (\n) if it exists
+- Handles files with or without a trailing newline
+- Works correctly with different BUFFER_SIZE values
+- Uses a static variable to store remaining data between calls
 
 Bonus version supports multiple file descriptors simultaneously
 
 **Allowed Functions**
 
-read
-
-malloc
-
-free
-
+read, malloc, free
 No other library functions are allowed.
 
-**Project Files**
-get_next_line/
-├── get_next_line.c
-├── get_next_line_utils.c
-├── get_next_line.h
-├── get_next_line_bonus.c
-├── get_next_line_utils_bonus.c
-└── README.md
 
 **BUFFER_SIZE**
 
 The size of the reading buffer is defined by the BUFFER_SIZE macro and can be set at compile time:
-
+```c
 gcc -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
-
+```
 
 The function must work correctly with any positive value of BUFFER_SIZE.
 
@@ -65,23 +47,15 @@ The function must work correctly with any positive value of BUFFER_SIZE.
 
 The bonus implementation allows:
 
-Reading from multiple file descriptors at the same time
-
-Independent static storage for each file descriptor
-
-Implementation Overview
-
-The function works as follows:
-
-Read data from the file descriptor into a temporary buffer
-
-Append the read data to a static storage string
-
-Check if a complete line is available
-
-Extract and return the next line
-
-Store any remaining data for the next function call
+- Reading from multiple file descriptors at the same time
+- Independent static storage for each file descriptor
+- Implementation Overview
+- The function works as follows:
+- Read data from the file descriptor into a temporary buffer
+- Append the read data to a static storage string
+- Check if a complete line is available
+- Extract and return the next line
+- Store any remaining data for the next function call
 
 Special care is taken to manage memory correctly and avoid leaks.
 
@@ -111,43 +85,34 @@ int main(void)
 
 The function returns NULL in the following cases:
 
-Invalid file descriptor
+- Invalid file descriptor
+- BUFFER_SIZE is less than or equal to 0
+- A read error occurs
+- End of file is reached and no data remains
 
-BUFFER_SIZE is less than or equal to 0
-
-A read error occurs
-
-End of file is reached and no data remains
-
-Learning Objectives
+**Learning Objectives**
 
 This project helps develop:
 
-A solid understanding of file descriptors
+- A solid understanding of file descriptors
+- Proper use of static variables in C
+- Efficient buffered reading
+- Safe dynamic memory allocation and deallocation
+- Writing clean, norm-compliant C code
 
-Proper use of static variables in C
-
-Efficient buffered reading
-
-Safe dynamic memory allocation and deallocation
-
-Writing clean, norm-compliant C code
-
-Project Context
+**Project Context**
 
 This project is part of the 42 Network curriculum and follows:
 
-The 42 Norm
-
-Strict memory management rules
-
-Mandatory use of allowed functions only
+- The 42 Norm
+- Strict memory management rules
+- Mandatory use of allowed functions only
 
 **Author**
 
 Lusine Atshemyan
 42 Yerevan
 
-License
+**License**
 
 This project is for educational purposes only.
