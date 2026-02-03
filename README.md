@@ -15,8 +15,9 @@ Each call to get_next_line() returns the next line read from the file descriptor
 A line is defined as a sequence of characters ending with a newline character (\n), or the end of file.
 
 If there is nothing more to read or an error occurs, the function returns NULL.
+```
 
-**Function Behavior**
+## 📌 Function Behavior**
 
 Reads from a given file descriptor
 
@@ -84,7 +85,8 @@ Store any remaining data for the next function call
 
 Special care is taken to manage memory correctly and avoid leaks.
 
-Usage Example
+**Usage Example**
+```c
 #include <fcntl.h>
 #include <stdio.h>
 #include "get_next_line.h"
@@ -103,6 +105,7 @@ int main(void)
     close(fd);
     return (0);
 }
+```
 
 **Error Handling**
 
